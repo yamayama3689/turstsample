@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    結果（前半）
+{% endblock %}
+
+{% block content %}
+
+{% if player.id_in_group == 1 %}
+    <p>
+        あなたは参加者Bに {{ group.sent_amountP1 }}円送金しました。
+        参加者Bは {{group.sent_back_amountP1}}円を返金しました。
+        よって、あなたのあなたの残り資金は{{ first_fundsP1 }}円であり、収入は {{ revenuP1 }}円です。
+    </p>
+    <p>
+        ゆえに, あなたの前半の利得は {{ first_payoffP1 }}円です。
+    </p>
+    {% else %}
+    <p>
+        あなたは「資金」として{{ Constants.endowment }}円所持しています。
+        参加者Aはあなたに {{ group.sent_amountP1 }}円送金しました。
+        そしてあなたは{{group.sent_back_amountP1}}円を参加者Bに返金しました。
+        よって、あなたの収入は{{ revenuP2 }}円となります。
+    </p>
+    <p>
+        ゆえに, あなたの前半の利得は {{ first_payoffP2 }}円です。
+    </p>
+{% endif %}
+
+    
+
+    {% include Constants.instructions_template %}
+
+    {% next_button %}
+
+{% endblock %}

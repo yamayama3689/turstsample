@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    結果(参加者B)
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        あなたは参加者Aに{{ group.sent_amountP2 }}円送金しました。（送金した場合100円の手数料がかかります）
+        参加者Bは{{ group.sent_amountP1 }}円を送金しました。
+
+        結果、
+        あなたは{{ repaymentP2 }}円を獲得しました（0円の場合、相手は返金しなかったということです。）。
+    </p>
+    <p>
+        ゆえに, あなたの最終獲得利得は{{ player.payoff }}円です。
+    </p>
+
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    あなたの選択の番です。
+{% endblock %}
+
+{% block content %}
+
+    {% include Constants.instructions_template %}
+
+    <p>
+    あなたは参加者Bです。 あなたは「資金」として {{Constants.endowment}}円を持っています。参加者Aに送金する金額を決めてください。
+    </p>
+
+    {% formfields %}
+
+    {% next_button %}
+
+{% endblock %}

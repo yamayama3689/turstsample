@@ -1,0 +1,19 @@
+{{ block title }}Bid{{ endblock }}
+{{ block content }}
+
+    <p>
+        The value of the item is estimated to be {{ player.item_value_estimate }}.
+        This estimate may deviate from the actual value by at most {{ Constants.bid_noise }}.
+    </p>
+
+    <p>
+        Please make your bid now. The amount can be between {{ Constants.bid_min }} and {{ Constants.bid_max }}, inclusive.
+    </p>
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+    {{ include Constants.instructions_template }}
+
+{{ endblock }}

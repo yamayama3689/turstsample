@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    あなたの選択の番です。
+{% endblock %}
+
+{% block content %}
+
+    {% include Constants.instructions_template %}
+
+    <p>
+    あなたは参加者Aです。参加者Bはあなたに {{group.sent_amountP2}}円送金しました。つまりあなたは現在 {{group.sent_amountP2}}円を持っています。
+    </p>
+
+    {% formfields %}
+
+    {% next_button %}
+
+{% endblock %}

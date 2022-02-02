@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    結果
+{% endblock %}
+
+{% block content %}
+
+{% if player.id_in_group == 1 %}
+    <p>
+        あなたは参加者Bに {{ group.sent_amount }}送りました。
+        参加者Bは {{group.sent_back_amount}}返しました。
+    </p>
+    <p>
+        したがって、あなたはこのゲームで
+        {{ Constants.endowment }}-{{ group.sent_amount }}+{{ group.sent_back_amount }}=<b>{{ player.payoff }}</b>獲得しました。
+    </p>
+    {% else %}
+    <p>
+        参加者Aはあなたに {{ group.sent_amount }}送りました。
+        そしてあなたは{{group.sent_back_amount}}を参加者Bに返しました。
+    </p>
+    <p>
+        したがって、あなたはこのゲームで
+        {{ tripled_amount }})-({{ group.sent_back_amount }})=<b>{{ player.payoff }}</b>獲得しました。
+    </p>
+    
+
+{% endif %}
+
+    {% next_button %}
+
+{% endblock %}
