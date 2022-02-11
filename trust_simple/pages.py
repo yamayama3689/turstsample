@@ -8,6 +8,8 @@ class Send(Page):
     form_model = 'group'
     form_fields = ['sent_amount']
 
+    timeout_seconds = 60
+
     def is_displayed(self):
         return self.player.id_in_group == 1
 
@@ -21,6 +23,8 @@ class SendBack(Page):
     form_model = 'group'
     form_fields = ['sent_back_amount']
 
+    timeout_seconds = 60
+
     def is_displayed(self):
         return self.player.id_in_group == 2
 
@@ -33,10 +37,12 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
+    timeout_seconds = 60
     def vars_for_template(self):
         return dict(tripled_amount=self.group.sent_amount * Constants.multiplier)
 
 class Survey(Page):
+    timeout_seconds = 60
     def is_displayed(self):
         return self.player.id_in_group == 1
 

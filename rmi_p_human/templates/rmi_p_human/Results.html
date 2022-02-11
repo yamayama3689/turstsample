@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    結果
+{% endblock %}
+
+{% block content %}
+
+
+    <p>
+        あなたは参加者Bに {{ player.sent_amount }}送りました。
+        そして、参加者Bはあなたに{{ sent_back_amount }}返されました。
+    </p>
+    <p>
+        したがって、あなたはこのゲームで
+        {{ player.payoff }}を獲得しました。
+    </p>
+    
+    {% next_button %}
+
+{% endblock %}

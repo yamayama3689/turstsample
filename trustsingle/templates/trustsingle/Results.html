@@ -7,6 +7,11 @@
 
 {% block content %}
 
+<p>
+    You sent Participant robot {{ player.sent_amount }}.
+    Participant robot returned {{ twice_amount }}.
+</p>
+
 {% if player.id_in_group == 1 %}
     <p>
         You sent Participant robot {{ player.sent_amount }}.

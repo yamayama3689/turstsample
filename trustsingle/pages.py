@@ -36,11 +36,10 @@ class ResultsWaitPage(WaitPage):
 class Results(Page):
     def vars_for_template(self):
         num = random.randrange(1, 101)
-        if num >= 30:
+        if num > 30:
             return dict(twice_amount = self.player.sent_amount * Constants.multiplier)
         else:
-            return dict(twice_amount = self.player.sent_amount)
-    pass
+            return dict(twice_amount = 0)
 
 
 page_sequence = [Send, Results]

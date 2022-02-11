@@ -3,6 +3,18 @@ from os import environ
 
 SESSION_CONFIGS = [
     {
+        "name": "common_value_auction",
+        "display_name": "common_value_auction",
+        "num_demo_participants": 1,
+        "app_sequence": ["common_value_auction"],
+    },
+    {
+        "name": "RMI_p_human",
+        "display_name": "RMI_p_human",
+        "num_demo_participants": 1,
+        "app_sequence": ["rmi_p_human"],
+    },
+    {
         "name": "trustgame_aftersurvey",
         "display_name": "信頼ゲーム_事後質問",
         "num_demo_participants": 2,
@@ -67,7 +79,7 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
+    real_world_currency_per_point=2.00, participation_fee=0.00, doc=""
 )
 
 PARTICIPANT_FIELDS = []
@@ -78,8 +90,8 @@ SESSION_FIELDS = []
 LANGUAGE_CODE = 'ja'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+REAL_WORLD_CURRENCY_CODE = 'JPY'
+USE_POINTS = False
 
 ROOMS = [
     dict(
