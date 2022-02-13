@@ -20,6 +20,12 @@ SESSION_CONFIGS = [
         "num_demo_participants": 1,
         "app_sequence": ["jsai_demo_round", "rmi_p_robot", "trustgame_survey"],
     },
+    {
+        "name": "RMI_m_robot",
+        "display_name": "RMI_m_robot",
+        "num_demo_participants": 1,
+        "app_sequence": ["jsai_demo_round", "rmi_m_robot", "trustgame_survey"],
+    },
     # {
     #     "name": "trustgame_aftersurvey",
     #     "display_name": "信頼ゲーム_事後質問",
