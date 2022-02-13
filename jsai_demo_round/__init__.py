@@ -9,14 +9,14 @@ rmi_over_0 human trust game
 
 #Models
 class Constants(BaseConstants):
-    name_in_url = 'rmi_p_human'
+    name_in_url = 'jsai_demo_round'
     players_per_group = None
-    num_rounds = 10
+    num_rounds = 2
 
     endowment = c(1000)
     multiplier = 3
 
-    instructions_template = 'rmi_p_human/instructions.html'
+    instructions_template = 'jsai_demo_round/instructions.html'
 
 
 class Subsession(BaseSubsession):
@@ -35,18 +35,6 @@ class Player(BasePlayer):
         initial=c(0)
     )
 
-    thanks = models.IntegerField(
-        choices=[1,2,3,4,5,6,7],
-        label='取引した結果、現在相手に対してどの程度「感謝」の気持ちを抱いていますか？',
-        widget=widgets.RadioSelect,
-    )
-
-    anger = models.IntegerField(
-        choices=[1,2,3,4,5,6,7],
-        label='取引した結果、現在相手に対してどの程度「怒り」の気持ちを抱いていますか？',
-        widget=widgets.RadioSelect,
-    )
-
 #Pages
 class Send(Page):
 
@@ -55,14 +43,10 @@ class Send(Page):
 
     timeout_seconds = 60
 
-    def vars_for_template(player: Player):
-        round = player.round_number
-        return dict(round = round)
-
     @staticmethod
     def  before_next_page(player: Player, timeout_happened):
             tripled_amount = player.sent_amount * Constants.multiplier + 1
-            sent_back_amount = random.randrange(player.sent_amount, tripled_amount, 50)
+            sent_back_amount = random.randrange(0, tripled_amount, 50)
             player.payoff = Constants.endowment - player.sent_amount + sent_back_amount
 
 class Results(Page):
@@ -70,14 +54,7 @@ class Results(Page):
     def vars_for_template(player: Player):
         return dict(sent_back_amount = player.payoff + player.sent_amount - Constants.endowment)
 
-class Survey(Page):
-    timeout_seconds = 60
-
-    form_model = 'player'
-    form_fields = ['thanks', 'anger']
-
-
-page_sequence = [Send, Results, Survey]
+page_sequence = [Send, Results]
 
     
     

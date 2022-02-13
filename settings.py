@@ -6,7 +6,7 @@ SESSION_CONFIGS = [
         "name": "RMI_p_human",
         "display_name": "RMI_p_human",
         "num_demo_participants": 1,
-        "app_sequence": ["rmi_p_human", "trustgame_survey"],
+        "app_sequence": ["jsai_demo_round", "rmi_p_human", "trustgame_survey"],
     },
     # {
     #     "name": "trustgame_aftersurvey",
