@@ -1,7 +1,6 @@
 from otree.api import *
-from otree.api import Currency as c
+from otree.api import Currency as c, currency_range
 import random
-
 
 
 doc = """
@@ -28,35 +27,25 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    #currency_rangeの形式のフォームだと、タイムアウトになった時、sent_amountに何も値が入らない（エラー吐く）ので、初期値を設定しています。
     sent_amount = models.CurrencyField(
-        min=c(0),
-        max=Constants.endowment,
+        choices=currency_range(c(0), Constants.endowment, c(50)),
         doc="""Amount sent by P1""",
-        label="参加者Bにいくら送りますか?",
+        label="参加者Bにいくら送りますか?（半角数字で入力してください）",
+        initial=c(0)
     )
 
     thanks = models.IntegerField(
         choices=[1,2,3,4,5,6,7],
-        label='取引相手に対してどの程度「感謝」の気持ちを抱いていますか？',
+        label='取引した結果、現在参加者Bに対してどの程度「感謝」の気持ちを抱いていますか？',
         widget=widgets.RadioSelect,
     )
 
     anger = models.IntegerField(
         choices=[1,2,3,4,5,6,7],
-        label='取引相手に対してどの程度「怒り」の気持ちを抱いていますか？',
+        label='取引した結果、現在参加者Bに対してどの程度「怒り」の気持ちを抱いていますか？',
         widget=widgets.RadioSelect,
     )
-
-#Functions
-def set_player(group: Group):
-    players = group.get_players()
-    for p in players:
-      set_payoffs(p)
-
-def set_payoffs(player: Player):
-    tripled_amount = player.sent_amount * Constants.multiplier + 1
-    sent_back_amount = random.randrange(player.sent_amount, tripled_amount, 50)
-    player.payoff = Constants.endowment - player.sent_amount + sent_back_amount
 
 #Pages
 class Send(Page):
@@ -66,9 +55,11 @@ class Send(Page):
 
     timeout_seconds = 60
 
-class ResultsWaitPage(WaitPage):
-    after_all_players_arrive = 'set_player'
-    #after_all_players_arriveはGroupを引数にとる関数しか設定できないっぽい
+    @staticmethod
+    def  before_next_page(player: Player, timeout_happened):
+            tripled_amount = player.sent_amount * Constants.multiplier + 1
+            sent_back_amount = random.randrange(player.sent_amount, tripled_amount, 50)
+            player.payoff = Constants.endowment - player.sent_amount + sent_back_amount
 
 class Results(Page):
     timeout_seconds = 60
@@ -82,15 +73,7 @@ class Survey(Page):
     form_fields = ['thanks', 'anger']
 
 
-page_sequence = [Send, ResultsWaitPage, Results,  Survey]
+page_sequence = [Send, Results, Survey]
 
     
-
-
-
-
-
-
-
-
     
