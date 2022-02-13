@@ -31,7 +31,7 @@ class Player(BasePlayer):
     sent_amount = models.CurrencyField(
         choices=currency_range(c(0), Constants.endowment, c(50)),
         doc="""Amount sent by P1""",
-        label="相手にいくら送りますか?（半角数字で入力してください）",
+        label="相手にいくら送りますか?",
         initial=c(0)
     )
 
@@ -59,10 +59,11 @@ class Send(Page):
         round = player.round_number
         return dict(round = round)
 
+    #送金額~送金額の3倍の中から50円刻みで返金額を決定
     @staticmethod
     def  before_next_page(player: Player, timeout_happened):
-            tripled_amount = player.sent_amount * Constants.multiplier + 1
-            sent_back_amount = random.randrange(player.sent_amount, tripled_amount, 50)
+            tripled_amount = player.sent_amount * Constants.multiplier + c(1)
+            sent_back_amount = random.randrange(player.sent_amount, tripled_amount, c(50))
             player.payoff = Constants.endowment - player.sent_amount + sent_back_amount
 
 class Results(Page):
