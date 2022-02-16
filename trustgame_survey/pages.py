@@ -1,5 +1,4 @@
 from socket import timeout
-from otree.api import Currency as c, currency_range
 from ._builtin import Page
 from .models import Constants
 
