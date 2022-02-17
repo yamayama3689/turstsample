@@ -37,13 +37,13 @@ class Player(BasePlayer):
 
     thanks = models.IntegerField(
         choices=[1,2,3,4,5,6,7],
-        label='取引した結果、現在ロボットに対してどの程度「感謝」の気持ちを抱いていますか？',
+        label='取引した結果、現在ロボットに対してどの程度「感謝」の気持ちを抱いていますか？(気持ちが小さいほど1、大きいほど7に近い数字を選んでください)',
         widget=widgets.RadioSelect,
     )
 
     anger = models.IntegerField(
         choices=[1,2,3,4,5,6,7],
-        label='取引した結果、現在ロボットに対してどの程度「怒り」の気持ちを抱いていますか？',
+        label='取引した結果、現在ロボットに対してどの程度「怒り」の気持ちを抱いていますか？(気持ちが小さいほど1、大きいほど7に近い数字を選んでください)',
         widget=widgets.RadioSelect,
     )
 
