@@ -88,28 +88,53 @@ ROOMS = [
         participant_label_file='_rooms/jsai02_17_1400.txt',
     ),
     dict(
-        name='jsai02_18_1400',
-        display_name='2月18日14:00枠',
+        name='jsai02_18_1400ex1',
+        display_name='2月18日14:00枠実験1',
         participant_label_file='_rooms/jsai02_18_1400.txt',
     ),
     dict(
-        name='jsai02_18_2000',
-        display_name='2月18日20:00枠',
+        name='jsai02_18_1400ex2',
+        display_name='2月18日14:00枠実験2',
+        participant_label_file='_rooms/jsai02_18_1400.txt',
+    ),
+    dict(
+        name='jsai02_18_2000ex1',
+        display_name='2月18日20:00枠実験1',
         participant_label_file='_rooms/jsai02_18_2000.txt',
     ),
     dict(
-        name='jsai02_21_1400',
-        display_name='2月21日14:00枠',
+        name='jsai02_18_2000ex2',
+        display_name='2月18日20:00枠実験2',
+        participant_label_file='_rooms/jsai02_18_2000.txt',
+    ),
+    dict(
+        name='jsai02_21_1400ex1',
+        display_name='2月21日14:00枠実験1',
         participant_label_file='_rooms/jsai02_21_1400.txt',
     ),
     dict(
-        name='jsai02_21_2000',
-        display_name='2月21日20:00枠',
+        name='jsai02_21_1400ex2',
+        display_name='2月21日14:00枠実験2',
+        participant_label_file='_rooms/jsai02_21_1400.txt',
+    ),
+    dict(
+        name='jsai02_21_2000ex1',
+        display_name='2月21日20:00枠実験1',
         participant_label_file='_rooms/jsai02_21_2000.txt',
     ),
     dict(
-        name='jsai02_22_1400',
-        display_name='2月22日14:00枠',
+        name='jsai02_21_2000ex2',
+        display_name='2月21日20:00枠実験2',
+        participant_label_file='_rooms/jsai02_21_2000.txt',
+    ),
+    dict(
+        name='jsai02_22_1400ex1',
+        display_name='2月22日14:00枠実験1',
+        participant_label_file='_rooms/jsai02_22_1400.txt',
+    ),
+    dict(
+        name='jsai02_22_1400ex2',
+        display_name='2月22日14:00枠実験2',
         participant_label_file='_rooms/jsai02_22_1400.txt',
     ),
     # dict(
